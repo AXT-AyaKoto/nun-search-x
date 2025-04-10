@@ -12,6 +12,59 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=360,initial-scale=1">
 		<title>ぬんサーチX（えっくす）</title>
+		<style>
+			:root {
+				/* 色変数 */
+				--sora: #245eff;
+			}
+
+			input[type="button"] {
+				border-radius: calc(1px * infinity);
+				border-width: 1px;
+			}
+
+			input[type="checkbox"][switch] {
+				width: 2.8rem;
+				height: 1.4rem;
+				appearance: none;
+				/* 位置を真ん中に揃えたい */
+				display: inline-block;
+				margin: 0 .5rem;
+				vertical-align: middle;
+				position: relative;
+				bottom: 1px;
+
+				/* トグルスイッチのように見せる */
+				border: 1px solid oklch(from var(--sora) calc(l + 0.2) 0 h / .8);
+				box-sizing: border-box;
+				border-radius: 1.4rem;
+				background: oklch(from var(--sora) calc(l + 0.2) 0 h / .5);
+				transition: all .2s ease-in-out;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0.25px;
+					left: 0.5px;
+					width: calc(1.4rem - 2px);
+					height: calc(1.4rem - 2px);
+					border-radius: 50%;
+					background: oklch(from var(--sora) calc(l + 0.2) 0 h / .8);
+					transition: all .2s ease-in-out;
+				}
+
+				&:checked {
+					border: 1px solid oklch(from var(--sora) calc(l + 0.2) 0.25 h / .8);
+					background: oklch(from var(--sora) calc(l + 0.2) 0.25 h / .5);
+
+					&::before {
+						left: calc(100% - 0.25px);
+						transform: translateX(-100%);
+						background: oklch(from var(--sora) calc(l + 0.2) 0.25 h / .8);
+					}
+				}
+			}
+		</style>
 	</head>
 
 	<body>
