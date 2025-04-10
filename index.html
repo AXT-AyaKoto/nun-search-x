@@ -18,6 +18,18 @@
 				--sora: #245eff;
 			}
 
+			h1 {
+				font-size: 1.2rem;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+			}
+
+			h3 {
+				font-size: 1.0rem;
+			}
+
 			input[type="button"] {
 				border-radius: calc(1px * infinity);
 				border-width: 1px;
@@ -68,49 +80,98 @@
 	</head>
 
 	<body>
-		<h3>ぬんサーチX（えっくす）</h3>
-		<h4>オプション</h4>
-		<p>
-			<input type="checkbox" name="sorachan-love" id="checkboxSoraChanLoveModeEnabled" switch>ときのそら（@tokino_sora）のポストだけを検索
-		</p>
-		<h4>1. 日付範囲指定（チェックで有効無効切り替え）</h4>
-		<p>
-			<input type="checkbox" name="since-enabled" id="checkboxSinceEnabled" checked switch>
-			いつから？：<input type="date" name="since-date" id="textboxSinceDate" value="2017-09-07"> JST 00時00分00秒 から<br>
-			　　　　　　　　　　<input type="button" name="since-yesterday" id="buttonSinceYesterdayTag" value="昨日をセット" onclick="clickSinceYesterdayButton()"><br><br>
-			<input type="checkbox" name="until-enabled" id="checkboxUntilEnabled" checked switch>
-			いつまで？：<input type="date" name="until-date" id="textboxUntilDate"> JST 23時59分59秒 まで
-		</p>
-		<h4>2. キーワード指定</h4>
-		キーワード：<input type="text" name="name" id="textboxKeyword" size="40"><br>
-		※　半角スペース区切り(AND検索)<br>
-		" OR "を手入力して区切るとOR検索
-		<p>
-			<strong>↓自動入力ボタン</strong><br>
-		<p>
-			<input type="button" name="name-tag" id="buttonNameTag" value="#ときのそら" onclick="clickNameTagButton()">
-		</p>
-		<p>
-			<input type="button" name="livestream-tag" id="buttonLiveStreamTag" value="#ときのそら生放送" onclick="clickLiveStreamTagButton()">
-			<input type="button" name="fc-tag" id="buttonFcTag" value="#ときのそらFC" onclick="clickFcTagButton()">
-		</p>
-		<p>
-			<input type="button" name="art-tag" id="buttonArtTag" value="#そらArt" onclick="clickArtTagButton()">
-			<input type="button" name="old-art-tag" id="buttonOldArtTag" value="#soraArt" onclick="clickOldArtTagButton()">
-		</p>
-		<p>
-			<input type="button" name="listen-tag" id="buttonListenTag" value="#そらぬん聞いたよ" onclick="clickListenTagButton()">
-			<input type="button" name="issyo-tag" id="buttonIsshoTag" value="#ときのそらと一緒" onclick="clickIsshoTagButton()">
-		</p>
-		<p>
-			<input type="button" name="keepShinin-tag" id="buttonKeepShininTag" value="#ときのそら_KeepShinin" onclick="clickKeepShininTagButton()">
-			<input type="button" name="sorapa2024-tag" id="buttonSorapa2024Tag" value="#そらぱ2024" onclick="clickSorapa2024TagButton()">
-		</p>
-		</p>
-		<h4>3. 設定した条件でXを検索</h4>
-		<p>
-			<input class="button" type="button" value="Xで検索 (๑╹ᆺ╹)ぬん！" onclick="openPage()">
-		</p>
+		<h1>ぬんサーチX（えっくす）</h1>
+		<h2>オプション</h2>
+		<section>
+			<h3>そらちゃんらぶモード</h3>
+			<input type="checkbox" name="sorachan-love" id="checkboxSoraChanLoveModeEnabled" switch><label for="checkboxSoraChanLoveModeEnabled">ときのそら（@tokino_sora）のポストだけを検索</label>
+		</section>
+		<section>
+			<h4>日付・範囲指定</h4>
+			<ul>
+				<li>
+					<input type="checkbox" name="since-enabled" id="checkboxSinceEnabled" checked switch>
+					<label for="checkboxSinceEnabled">いつから？</label>
+					<input type="date" name="since-date" id="textboxSinceDate" value="2017-09-07"> JST 00時00分00秒 から
+					<ul>
+						<li><input type="button" name="since-yesterday" id="buttonSinceYesterdayTag" value="昨日をセット" onclick="clickSinceYesterdayButton()"></li>
+					</ul>
+				</li>
+				<li>
+					<input type="checkbox" name="until-enabled" id="checkboxUntilEnabled" checked switch>
+					<label for="checkboxUntilEnabled">いつまで？</label>
+					<input type="date" name="until-date" id="textboxUntilDate"> JST 23時59分59秒 まで
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h4>キーワード指定</h4>
+			<p>
+				キーワード : <input type="text" name="name" id="textboxKeyword" size="40"><br>
+				キーワードは半角スペース区切りでAND検索<br>
+				" OR "を手入力して区切るとOR検索<br>
+			</p>
+			<ul>
+				<li>
+					名前タグ
+					<ul>
+						<li>
+							<input type="button" name="name-tag" id="buttonNameTag" value="#ときのそら" onclick="clickNameTagButton()">
+						</li>
+					</ul>
+				</li>
+				<li>
+					放送タグ
+					<ul>
+						<li>
+							<input type="button" name="livestream-tag" id="buttonLiveStreamTag" value="#ときのそら生放送" onclick="clickLiveStreamTagButton()">
+						</li>
+						<li>
+							<input type="button" name="fc-tag" id="buttonFcTag" value="#ときのそらFC" onclick="clickFcTagButton()">
+						</li>
+					</ul>
+				</li>
+				<li>
+					アートタグ
+					<ul>
+						<li>
+							<input type="button" name="art-tag" id="buttonArtTag" value="#そらArt" onclick="clickArtTagButton()">
+						</li>
+						<li>
+							<input type="button" name="old-art-tag" id="buttonOldArtTag" value="#soraArt" onclick="clickOldArtTagButton()">
+						</li>
+					</ul>
+				</li>
+				<li>
+					イベントタグ
+					<ul>
+						<li>
+							<input type="button" name="keepShinin-tag" id="buttonKeepShininTag" value="#ときのそら_KeepShinin" onclick="clickKeepShininTagButton()">
+						</li>
+						<li>
+							<input type="button" name="sorapa2024-tag" id="buttonSorapa2024Tag" value="#そらぱ2024" onclick="clickSorapa2024TagButton()">
+						</li>
+					</ul>
+				</li>
+				<li>
+					その他タグ
+					<ul>
+						<li>
+							<input type="button" name="listen-tag" id="buttonListenTag" value="#そらぬん聞いたよ" onclick="clickListenTagButton()">
+						</li>
+						<li>
+							<input type="button" name="issyo-tag" id="buttonIsshoTag" value="#ときのそらと一緒" onclick="clickIsshoTagButton()">
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h4>設定した条件でXを検索</h4>
+			<p>
+				<input class="button" type="button" value="Xで検索 (๑╹ᆺ╹)ぬん！" onclick="openPage()">
+			</p>
+		</section>
 	</body>
 
 	<script>
