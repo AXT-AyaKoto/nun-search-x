@@ -12,24 +12,77 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=360,initial-scale=1">
 		<title>ぬんサーチX（えっくす）</title>
+		<style>
+			:root {
+				/* 色変数 */
+				--sora: #245eff;
+			}
+
+			input[type="button"] {
+				border-radius: calc(1px * infinity);
+				border-width: 1px;
+			}
+
+			input[type="checkbox"][switch] {
+				width: 2.8rem;
+				height: 1.4rem;
+				appearance: none;
+				/* 位置を真ん中に揃えたい */
+				display: inline-block;
+				margin: 0 .5rem;
+				vertical-align: middle;
+				position: relative;
+				bottom: 1px;
+
+				/* トグルスイッチのように見せる */
+				border: 1px solid oklch(from var(--sora) calc(l + 0.2) 0 h / .8);
+				box-sizing: border-box;
+				border-radius: 1.4rem;
+				background: oklch(from var(--sora) calc(l + 0.2) 0 h / .5);
+				transition: all .2s ease-in-out;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0.25px;
+					left: 0.5px;
+					width: calc(1.4rem - 2px);
+					height: calc(1.4rem - 2px);
+					border-radius: 50%;
+					background: oklch(from var(--sora) calc(l + 0.2) 0 h / .8);
+					transition: all .2s ease-in-out;
+				}
+
+				&:checked {
+					border: 1px solid oklch(from var(--sora) calc(l + 0.2) 0.25 h / .8);
+					background: oklch(from var(--sora) calc(l + 0.2) 0.25 h / .5);
+
+					&::before {
+						left: calc(100% - 0.25px);
+						transform: translateX(-100%);
+						background: oklch(from var(--sora) calc(l + 0.2) 0.25 h / .8);
+					}
+				}
+			}
+		</style>
 	</head>
 
 	<body>
 		<h3>ぬんサーチX（えっくす）</h3>
 		<h4>オプション</h4>
 		<p>
-			<input type="checkbox" name="sorachan-love" id="checkboxSoraChanLoveModeEnabled">ときのそら（@tokino_sora）のポストだけを検索
+			<input type="checkbox" name="sorachan-love" id="checkboxSoraChanLoveModeEnabled" switch>ときのそら（@tokino_sora）のポストだけを検索
 		</p>
 		<h4>1. 日付範囲指定（チェックで有効無効切り替え）</h4>
 		<p>
-			<input type="checkbox" name="since-enabled" id="checkboxSinceEnabled" checked>
+			<input type="checkbox" name="since-enabled" id="checkboxSinceEnabled" checked switch>
 			いつから？：<input type="date" name="since-date" id="textboxSinceDate" value="2017-09-07"> JST 00時00分00秒 から<br>
-			　　　　　　　　<input type="button" name="since-yesterday" id="buttonSinceYesterdayTag" value="昨日をセット" onclick="clickSinceYesterdayButton()"><br><br>
-			<input type="checkbox" name="until-enabled" id="checkboxUntilEnabled" checked>
+			　　　　　　　　　　<input type="button" name="since-yesterday" id="buttonSinceYesterdayTag" value="昨日をセット" onclick="clickSinceYesterdayButton()"><br><br>
+			<input type="checkbox" name="until-enabled" id="checkboxUntilEnabled" checked switch>
 			いつまで？：<input type="date" name="until-date" id="textboxUntilDate"> JST 23時59分59秒 まで
 		</p>
 		<h4>2. キーワード指定</h4>
-		キーワード：<input type="text" name="name" id="textboxKeyword" size="20"><br>
+		キーワード：<input type="text" name="name" id="textboxKeyword" size="40"><br>
 		※　半角スペース区切り(AND検索)<br>
 		" OR "を手入力して区切るとOR検索
 		<p>
